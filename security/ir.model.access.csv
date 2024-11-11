@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_marcas_grilla_marketing,access.access_marcas_grilla_marketing,model_marcas_grilla_marketing,base.group_user,1,1,1,1
+access_plataformas_grilla_marketing,access.access_plataformas_grilla_marketing,model_plataformas_grilla_marketing,base.group_user,1,1,1,1
+access_responsables_grilla_marketing,access.access_responsables_grilla_marketing,model_responsables_grilla_marketing,base.group_user,1,1,1,1
+access_formatos_grilla_marketing,access.access_formatos_grilla_marketing,model_formatos_grilla_marketing,base.group_user,1,1,1,1
+
+

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record id="formatos_social_marketing_view_tree" model="ir.ui.view">
+            <field name="name">formatos_social_marketing.view.tree</field>
+            <field name="model">formatos.grilla_marketing</field>
+            <field name="arch" type="xml">
+                <tree string="Marcas" editable="top" sample="1" multi_edit="1" default_order="name">
+                    <field name="name"></field>
+                    <field name="color" widget="color_picker" ></field>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="formatos_social_marketing_action" model="ir.actions.act_window">
+            <field name="name">formatos Marketing Grilla</field>
+            <field name="res_model">formatos.grilla_marketing</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="formatos_social_marketing_view_tree" />
+
+        </record>
+
+
+                <menuitem id="menu_formatos_grilla_marketing" name="Formatos" parent="project.menu_project_config" action="formatos_social_marketing_action" />
+
+    </data>
+
+
+</odoo>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

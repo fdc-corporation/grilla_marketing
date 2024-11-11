@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record id="platafornas_grilla_marketing_view_tree" model="ir.ui.view">
+            <field name="name">platafornas_grilla_marketing.view.tree</field>
+            <field name="model">plataformas.grilla_marketing</field>
+            <field name="arch" type="xml">
+                <tree string="Plataformas donde publicar" editable="top" sample="1" multi_edit="1" default_order="name">
+                    <field name="name"></field>
+                    <field name="color" widget="color_picker" ></field>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="plataformas_grilla_marketing_action" model="ir.actions.act_window">
+            <field name="name">Plataformas donde publicar</field>
+            <field name="res_model">plataformas.grilla_marketing</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="platafornas_grilla_marketing_view_tree" />
+
+        </record>
+
+                <menuitem id="menu_plataformas_grilla_marketing" name="Plataformas" parent="project.menu_project_config" action="plataformas_grilla_marketing_action" />
+
+
+    </data>
+
+
+</odoo>
+
+
+
+
+
+
+
+
+
+
+
+
+

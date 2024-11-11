@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="inherti_view_grilla_event" model="ir.ui.view">
+        <field name="name">calendar.event.task.view.form.inherit</field>
+        <field name="model">calendar.event</field>
+        <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='alarm_ids']" position="after">
+                <field name="grilla_id" readonly="1" />
+                <field name="plataformas" widget="many2many_tags" options="{'color_field': 'color'}"  />
+            </xpath>
+            
+        </field>
+    </record>
+
+</odoo>

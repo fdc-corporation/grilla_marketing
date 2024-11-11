@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record id="marca_social_marketing_view_tree" model="ir.ui.view">
+            <field name="name">marca_social_marketing.view.tree</field>
+            <field name="model">marcas.grilla_marketing</field>
+            <field name="arch" type="xml">
+                <tree string="Marcas" editable="top" sample="1" multi_edit="1" default_order="name">
+                    <field name="name"></field>
+                    <field name="color" widget="color_picker" ></field>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="marcas_social_marketing_action" model="ir.actions.act_window">
+            <field name="name">Marca Marketing Grilla</field>
+            <field name="res_model">marcas.grilla_marketing</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="marca_social_marketing_view_tree" />
+
+        </record>
+
+
+                <menuitem id="menu_marcas_grilla_marketing" name="Marcas" parent="project.menu_project_config" action="marcas_social_marketing_action" />
+
+    </data>
+
+
+</odoo>
+
+
+
+
+
+
+
+
+
+

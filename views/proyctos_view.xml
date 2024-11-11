@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="marketing_inherit_module_name" model="ir.ui.view">
+        <field name="name">marketing.view.form.inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_ids']" position="after">
+                <field name="responsable" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="evento_id" readonly="1" />
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <button string="Agendar en calendario" name="create_evento_tarea" type="object" class="oe_highlight"  ></button>
+            </xpath>
+            <xpath expr="//div[@id='date_deadline_and_recurring_task']" position="after">
+                <field name="marcas" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="plataformas" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="formatos" widget="many2many_tags" options="{'color_field': 'color'}"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+               <page name="guion" string="Guion">
+                <field name="guion" type="html" options="{'collaborative': true, 'resizable': false}" placeholder="Agrega el guion de la tarea..."/>
+               </page>
+            </xpath>
+            <xpath expr="//field[@name='responsable']" position="attributes">
+                <attribute name="invisible">False</attribute>
+                <attribute name="string">Propósito</attribute>
+              </xpath>
+              <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='tag_ids']" position="attributes">
+                <attribute name="string">Responsable</attribute>
+              </xpath>
+        </field>
+    </record>
+
+</odoo>
+[options]
+addons_path = /opt/odoo/fdccorp/addons, /home/fdccorp/repos, /home/fdccorp/enterprise
+data_dir = /opt/odoo/fdccorp/data
+logfile = /var/log/odoo-fdccorp.log
+db_user = fdccorp
+db_password = fdccorp2024
+dbfilter = ^fdccorp$
+proxy_mode = True
+xmlrpc_port = 8070
+longpolling_port = 8074
+
+
+
+
