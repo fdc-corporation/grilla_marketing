@@ -44,13 +44,13 @@ class Proyecto(models.Model):
 
     def set_notification(self):
         for record in self:
-            if task.date_deadline == fields.Datetime.now():
+            if record.date_deadline == fields.Datetime.now():
                 print(
                     "------------------------SE ENVIO LA NOTIFICACION-------------------------"
                 )
 
                 # Crear la notificación
-                task.message_post(
+                record.message_post(
                     body="¡La tarea ha alcanzado la fecha de vencimiento!",
                     message_type="notification",
                     subtype_xmlid="mail.mt_comment",
