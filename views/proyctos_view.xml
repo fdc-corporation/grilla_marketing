@@ -34,17 +34,3 @@
     </record>
 
 </odoo>
-[options]
-addons_path = /opt/odoo/fdccorp/addons, /home/fdccorp/repos, /home/fdccorp/enterprise
-data_dir = /opt/odoo/fdccorp/data
-logfile = /var/log/odoo-fdccorp.log
-db_user = fdccorp
-db_password = fdccorp2024
-dbfilter = ^fdccorp$
-proxy_mode = True
-xmlrpc_port = 8070
-longpolling_port = 8074
-
-
-
-

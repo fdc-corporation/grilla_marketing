@@ -32,6 +32,7 @@
         'views/formatos_view.xml',
         'views/proyctos_view.xml',
         'views/evento-proyecto.xml',
+        'views/code/ir.cronp.xml'
     ],
 }
 
