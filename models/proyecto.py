@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from dateutil.relativedelta import relativedelta
 from datetime import datetime
 
 
@@ -43,11 +44,15 @@ class Proyecto(models.Model):
             raise UserError(_("No se pudo ejecutar la tarea"))
 
     def set_notification(self):
-        for record in self.env["project.task"].sudo().sreach([("date_deadline", "!=", False)]):
-            if record.date_deadline == fields.Datetime.now():
-                print(
-                    "------------------------SE ENVIO LA NOTIFICACION-------------------------"
-                )
+        for record in self.env["project.task"].search([("date_deadline", "!=", False)]):
+            fecha_original = record.date_deadline
+            fecha_modificada = fecha_original - relativedelta(days=1)
+
+            # Comparar solo las fechas sin las horas
+            if fecha_modificada.date() == fields.Datetime.now().date():
+                print("------------------------SE ENVIO LA NOTIFICACION-------------------------")
+                message = "¡La tarea ha alcanzado la fecha de vencimiento!"
+                partner_ids = [seguidor.id for seguidor in record.user_ids]
                 # Crear la notificación
                 record.message_post(
                     body="¡La tarea ha alcanzado la fecha de vencimiento!",
@@ -55,13 +60,13 @@ class Proyecto(models.Model):
                     subtype_xmlid="mail.mt_comment",
                 )
                 record.message_notify(
-                        body=message,
-                        partner_ids=record.user_ids,
-                        subject=f"La Tarea {record.name} esta en la fecha limite!!"
-                    )
-            print(
-                "------------------------FECHA DE VENCIMIENTO-------------------------"
-            )
-            print(record.date_deadline)
-            print(record.Datetime.now())
- 
+                    body=message,
+                    partner_ids=partner_ids,
+                    subject=f"La Tarea {record.name} esta en la fecha limite!!",
+                )
+
+            # Debug de las fechas
+            print("------------------------FECHA DE VENCIMIENTO-------------------------")
+            print(fecha_modificada.date())  # Solo la parte de la fecha
+            print(fecha_original)
+            print(fields.Datetime.now().date())  # Solo la parte de la fecha

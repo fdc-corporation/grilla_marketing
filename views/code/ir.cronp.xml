@@ -3,12 +3,12 @@
     <data noupdate="1">
         <!-- Definir la tarea programada -->
         <record id="ir_cron_notificacion_grilla" model="ir.cron">
-            <field name="name">Notificacion</field>
+            <field name="name">Notificación diaria</field>
             <field name="model_id" ref="model_project_task"/> <!-- Referencia correcta al modelo -->
             <field name="state">code</field>
-            <field name="code">model.set_notification()</field> <!-- Corregimos el código del método -->
-            <field name="interval_number">1</field> <!-- Intervalo de tiempo (en minutos) -->
-            <field name="interval_type">minutes</field> <!-- Tipo de intervalo -->
+            <field name="code">model.set_notification()</field> <!-- Llamar al método que envía la notificación -->
+            <field name="interval_number">1</field> <!-- Ejecutar cada 1 día -->
+            <field name="interval_type">days</field> <!-- Tipo de intervalo en días -->
             <field name="numbercall">-1</field> <!-- Número de veces que se debe ejecutar (-1 para ejecución infinita) -->
             <field name="active">True</field> <!-- Activar la tarea -->
         </record>
