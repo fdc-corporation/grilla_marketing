@@ -4,7 +4,6 @@ from datetime import datetime
 
 class Proyecto(models.Model):
     _inherit = "project.task"
-    _inherit = ['mail.thread', 'mail.activity.mixin']  # Hereda de mail.thread y mail.activity.mixin
 
     responsable = fields.Many2many(
         "responsables.grilla_marketing", string="Responsables"
