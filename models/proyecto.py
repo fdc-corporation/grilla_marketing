@@ -4,6 +4,7 @@ from datetime import datetime
 
 class Proyecto(models.Model):
     _inherit = "project.task"
+    _inherit = ['mail.thread', 'mail.activity.mixin']  # Hereda de mail.thread y mail.activity.mixin
 
     responsable = fields.Many2many(
         "responsables.grilla_marketing", string="Responsables"
@@ -48,16 +49,16 @@ class Proyecto(models.Model):
                 print(
                     "------------------------SE ENVIO LA NOTIFICACION-------------------------"
                 )
-
                 # Crear la notificación
-                record.message_post(
-                    body="¡La tarea ha alcanzado la fecha de vencimiento!",
-                    message_type="notification",
-                    subtype_xmlid="mail.mt_comment",
-                )
+                
+                record.message_notify(
+                        body=message,
+                        partner_ids=record.user_ids,
+                        subject=f"La Tarea {record.name} esta en la fecha limite!!"
+                    )
             print(
                 "------------------------FECHA DE VENCIMIENTO-------------------------"
             )
-            print(task.date_deadline)
-            print(fields.Datetime.now())
+            print(record.date_deadline)
+            print(record.Datetime.now())
  
