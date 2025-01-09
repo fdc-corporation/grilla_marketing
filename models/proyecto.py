@@ -43,13 +43,17 @@ class Proyecto(models.Model):
             raise UserError(_("No se pudo ejecutar la tarea"))
 
     def set_notification(self):
-        for record in self:
+        for record in self.env["project.task"].sudo().sreach([("date_deadline", "!=", False)]):
             if record.date_deadline == fields.Datetime.now():
                 print(
                     "------------------------SE ENVIO LA NOTIFICACION-------------------------"
                 )
                 # Crear la notificación
-                
+                record.message_post(
+                    body="¡La tarea ha alcanzado la fecha de vencimiento!",
+                    message_type="notification",
+                    subtype_xmlid="mail.mt_comment",
+                )
                 record.message_notify(
                         body=message,
                         partner_ids=record.user_ids,
