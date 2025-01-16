@@ -9,9 +9,11 @@
             <field name="code">model.set_notification()</field> <!-- Llamar al método que envía la notificación -->
             <field name="interval_number">1</field> <!-- Ejecutar cada 1 día -->
             <field name="interval_type">days</field> <!-- Tipo de intervalo en días -->
-            <field name="numbercall">-1</field> <!-- Número de veces que se debe ejecutar (-1 para ejecución infinita) -->
+            <field name="numbercall">1</field> <!-- Número de veces que se debe ejecutar (-1 para ejecución infinita) -->
             <field name="active">True</field> <!-- Activar la tarea -->
+            <field name="nextcall">2025-01-16 08:00:00</field> <!-- Evita que se ejecute inmediatamente -->
+
         </record>
-        
+
     </data>
 </odoo>
