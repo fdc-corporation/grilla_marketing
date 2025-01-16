@@ -52,7 +52,8 @@ class Proyecto(models.Model):
             if fecha_modificada.date() == fields.Datetime.now().date():
                 print("------------------------SE ENVIO LA NOTIFICACION-------------------------")
                 message = "¡La tarea ha alcanzado la fecha de vencimiento!"
-                partner_ids = [seguidor.id for seguidor in record.user_ids]
+                partner_ids = [user.partner_id.id for user in record.user_ids]
+
                 # Crear la notificación
                 record.message_post(
                     body="¡La tarea ha alcanzado la fecha de vencimiento!",
