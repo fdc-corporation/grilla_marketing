@@ -44,7 +44,7 @@ class Proyecto(models.Model):
             raise UserError(_("No se pudo ejecutar la tarea"))
 
     def set_notification(self):
-        for record in self.env["project.task"].search([("date_deadline", "!=", False)]):
+        for record in self.env["project.task"].search([("date_deadline", "!=", False), ("stage_id.name", "not in", ["Material Listo", "Publicado / Usado"])]):
             fecha_original = record.date_deadline
             fecha_modificada = fecha_original - relativedelta(days=1)
 
